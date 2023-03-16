@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+	<fo:layout-master-set>
+		<fo:simple-page-master master-name="single" page-height="297mm" page-width="210mm">
+			<fo:region-body margin="0.7cm"/>
+<!--			<fo:region-before extent="0.5cm"/>
+			<fo:region-after extent="0.5cm"/>-->
+		</fo:simple-page-master>
+	</fo:layout-master-set>
+	<fo:page-sequence master-reference="single">
+		<fo:flow flow-name="xsl-region-body">
+			<fo:block>Hello, World!</fo:block>
+			<fo:table>
+				<fo:table-column column-number="1"/>
+				<fo:table-column column-number="2"/>
+				<fo:table-column column-number="3"/>
+				<fo:table-column column-number="4"/>
+				<fo:table-column column-number="5"/>
+				<fo:table-column column-number="6"/>
+				<fo:table-column column-number="7"/>
+				<fo:table-column column-number="8"/>
+				<fo:table-header>
+					<fo:table-row border-style="solid" background-color="lightgrey">
+						<fo:table-cell text-align="center">
+							<fo:block>Period</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="center">
+							<fo:block>Year</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="center">
+							<fo:block>Amount</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="center">
+							<fo:block>Rate</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="center">
+							<fo:block>Interest</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="center">
+							<fo:block>Redemption</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="center">
+							<fo:block>Cum. Interest</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="center">
+							<fo:block>Cum. Cost</fo:block>
+						</fo:table-cell>
+					</fo:table-row>
+				</fo:table-header>
+				<fo:table-body>
+					<fo:table-row border-style="solid">
+						<fo:table-cell text-align="right">
+							<fo:block>1</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>2</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>3</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>4</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>1</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>2</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>3</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>4</fo:block>
+						</fo:table-cell>
+					</fo:table-row>
+					<fo:table-row border-style="solid">
+						<fo:table-cell text-align="right">
+							<fo:block>2</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>4</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>6</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>8</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>2</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>4</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>6</fo:block>
+						</fo:table-cell>
+						<fo:table-cell text-align="right">
+							<fo:block>8</fo:block>
+						</fo:table-cell>
+					</fo:table-row>
+				</fo:table-body>
+			</fo:table>
+			<fo:block>
+				<fo:instream-foreign-object>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+						<g style="fill:red; stroke:#000000">
+							<rect x="0" y="0" width="15" height="15"/>
+							<rect x="5" y="5" width="15" height="15"/>
+						</g>
+					</svg>
+				</fo:instream-foreign-object>
+			</fo:block>
+		</fo:flow>
+	</fo:page-sequence>
+</fo:root>
+
