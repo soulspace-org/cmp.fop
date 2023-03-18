@@ -11,4 +11,5 @@
 
   :test-paths ["test"]
   :resource-paths ["resources"]
+  :scm {:name "git" :url "https://github.com/soulspace-org/cmp.fop"}
   :deploy-repositories [["clojars" {:sign-releases false :url "https://clojars.org/repo"}]])
