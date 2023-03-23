@@ -1,6 +1,6 @@
 (defproject org.soulspace.clj/cmp.fop "0.3.1-SNAPSHOT"
   :description "The cmp.fop component is a Clojure wrapper for Apache FOP"
-  :url "https://github.com/lsolbach/CljComponents"
+  :url "https://github.com/soulspace-org/cmp.fop"
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
