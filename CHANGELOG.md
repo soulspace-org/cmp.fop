@@ -4,6 +4,7 @@ Change Log
 Version 0.3.1
 -------------
 * excluded jai transitive dependency
+* updated Apache FOP to version 2.8
 
 Version 0.3.0
 -------------

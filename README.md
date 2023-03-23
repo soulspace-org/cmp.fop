@@ -2,7 +2,7 @@ cmp.fop
 =======
 The cmp.fop component is a Clojure wrapper for Apache FOP.
 
-It fits nicely with the XSL-FO DSL in [xml.dsl](https://github.com/lsolbach/CljXML).
+It fits nicely with the XSL-FO DSL in [xml.dsl](https://github.com/soulspace-org/xml.dsl).
 
 If you want to generate PDF documents from data in your application, the **traditional** way of achieving it with XSL-FO is
 * convert your data to XML
@@ -12,7 +12,7 @@ If you want to generate PDF documents from data in your application, the **tradi
 With the XSL-FO DSL there is **no need** to convert your data to XML and to apply a XSL transformation.
 Just use the generated Clojure functions to programm XSL-FO directly with the data in your program.
 * use FO DSL functions and clojure control structures to generate XSL-FO directly from your data
-* use a FO processor like Apache FOP with the generated XSL-FO to generate the PDF file
+* use Apache FOP with the generated XSL-FO to generate the PDF file  via [cmp.fop](https://github.com/soulspace-org/cmp.fop)
 
 It is a lot easier, faster and much less memory intensive, to drop XSL transformation step completely.
 You don't have to convert your data to XML and you don't have to write the transformation to XSL-FO
@@ -35,7 +35,7 @@ Example call to generate a PDF document from a static XSL-FO document.
 
 Copyright
 ---------
-© 2011-2020 Ludger Solbach
+© 2011-2023 Ludger Solbach
 
 License
 -------
