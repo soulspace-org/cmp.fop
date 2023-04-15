@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 0.3.2
+-------------
+* fixed a NullPointerException when reading the config, introduced by the FOP update
+
 Version 0.3.1
 -------------
 * excluded jai transitive dependency
@@ -14,7 +18,6 @@ Version 0.3.0
 * added default fop.xconf
 * updated README
 * switched to deps.edn dependencies
-
 
 Version 0.1.0
 -------------

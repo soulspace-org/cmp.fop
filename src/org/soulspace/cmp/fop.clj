@@ -25,7 +25,7 @@
   ([]
     (new-fop-factory (io/resource "fop.xconf")))
   ([filename & opts]
-    (let [fc (FopConfParser. (io/as-file filename))
+    (let [fc (FopConfParser. (.getAbsoluteFile (io/as-file filename)))
           fb (.getFopFactoryBuilder fc)]
       (if opts
         (bean/set-properties! fb opts))
