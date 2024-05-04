@@ -27,19 +27,29 @@
   ([filename & opts]
     (let [fc (FopConfParser. (.getAbsoluteFile (io/as-file filename)))
           fb (.getFopFactoryBuilder fc)]
-      (if opts
+      (when opts
         (bean/set-properties! fb opts))
       (.build fb))))
 
+(defn new-user-agent
+  "Creates a new FOUserAgent from the `fop-factory` to customize output properties."
+  ([fop-factory & opts]
+   (let [fo-user-agent (.newFOUserAgent fop-factory)]
+     (when opts
+       (bean/set-properties! fo-user-agent opts))
+     fo-user-agent)))
+
 (defn fo-to-pdf
-  "Converts fo (file) to a pdf file."
+  "Creates the `pdf-file` from the `fo` input. Optionally takes the `fop-factory` and an `opts` map to set via the created FOUserAgent.
+   Common options are 
+   See the Apache FOP documentations for details."
   ([fo pdf-file]
     (fo-to-pdf (new-fop-factory) fo pdf-file))
-  ([fop-factory fo pdf-file]
+  ([fop-factory fo pdf-file & opts]
     ; configure foUserAgent as desired
     (with-open [out (io/output-stream pdf-file)]
-      (let [foUserAgent (.newFOUserAgent fop-factory)
-            fop (.newFop fop-factory MimeConstants/MIME_PDF out)
+      (let [foUserAgent (new-user-agent fop-factory opts)
+            fop (.newFop fop-factory MimeConstants/MIME_PDF foUserAgent out)
             sax-factory (SAXParserFactory/newInstance)]
         (.setNamespaceAware sax-factory true)
         (let [parser (.newSAXParser sax-factory)

@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 0.3.3
+-------------
+* updated Apache FOP to version 2.9
+* added configuration of FOUserAgent
+
 Version 0.3.2
 -------------
 * fixed a NullPointerException when reading the config, introduced by the FOP update
