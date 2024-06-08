@@ -35,23 +35,39 @@
   "Creates a new FOUserAgent from the `fop-factory` to customize output properties."
   ([fop-factory & opts]
    (let [fo-user-agent (.newFOUserAgent fop-factory)]
-     (when opts
+     (when (seq opts)
        (bean/set-properties! fo-user-agent opts))
      fo-user-agent)))
 
 (defn fo-to-pdf
-  "Creates the `pdf-file` from the `fo` input. Optionally takes the `fop-factory` and an `opts` map to set via the created FOUserAgent.
-   Common options are 
+  "Creates the `pdf-file` from the `fo` input. Optionally takes the `fop-factory`
+   and an `opts` map to set via the created FOUserAgent.
    See the Apache FOP documentations for details."
   ([fo pdf-file]
-    (fo-to-pdf (new-fop-factory) fo pdf-file))
-  ([fop-factory fo pdf-file & opts]
+   (fo-to-pdf (new-fop-factory) fo pdf-file))
+  ([fop-factory fo pdf-file]
+   (with-open [out (io/output-stream pdf-file)]
+     (let [foUserAgent (new-user-agent fop-factory)
+           fop (.newFop fop-factory MimeConstants/MIME_PDF foUserAgent out)
+           sax-factory (SAXParserFactory/newInstance)]
+       (.setNamespaceAware sax-factory true)
+       (let [parser (.newSAXParser sax-factory)
+             dh (.getDefaultHandler fop)]
+         (.parse parser fo dh)))))
+  ([fop-factory fo pdf-file opts]
     ; configure foUserAgent as desired
-    (with-open [out (io/output-stream pdf-file)]
-      (let [foUserAgent (new-user-agent fop-factory opts)
-            fop (.newFop fop-factory MimeConstants/MIME_PDF foUserAgent out)
-            sax-factory (SAXParserFactory/newInstance)]
-        (.setNamespaceAware sax-factory true)
-        (let [parser (.newSAXParser sax-factory)
-              dh (.getDefaultHandler fop)]
-          (.parse parser fo dh))))))
+   (with-open [out (io/output-stream pdf-file)]
+     (let [foUserAgent (new-user-agent fop-factory opts)
+           fop (.newFop fop-factory MimeConstants/MIME_PDF foUserAgent out)
+           sax-factory (SAXParserFactory/newInstance)]
+       (.setNamespaceAware sax-factory true)
+       (let [parser (.newSAXParser sax-factory)
+             dh (.getDefaultHandler fop)]
+         (.parse parser fo dh))))))
+
+(comment
+  (new-fop-factory) 
+  (new-fop-factory "fop.xconf")
+  (new-user-agent (new-fop-factory))
+  ;
+  )
